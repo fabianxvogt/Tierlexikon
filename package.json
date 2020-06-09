@@ -1,0 +1,22 @@
+{
+  "name": "tierlexikon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fabianxvogt/Tierlexikon.git"
+  },
+  "author": "Fabian Vogt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabianxvogt/Tierlexikon/issues"
+  },
+  "homepage": "https://github.com/fabianxvogt/Tierlexikon#readme",
+  "dependencies": {
+    "pg": "^8.2.1"
+  }
+}
