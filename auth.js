@@ -1,15 +1,16 @@
-const {Client} = require('pg');
-
 const dbName = "tierlexikon"
-const client = new Client({
+const credentials = {
     user: "postgres",
     password: "postgres",
     host: "localhost",
     port: "5432",
     database: dbName
-})
-module.exports = {
-    getClient: function () {
-      return client;
-    }
 }
+module.exports = {
+    getDbName:function () {
+        return dbName;
+    },
+    getCredentials:function () {
+        return credentials;
+    }
+};

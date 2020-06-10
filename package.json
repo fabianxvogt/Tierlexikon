@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/fabianxvogt/Tierlexikon#readme",
   "dependencies": {
+    "@types/node": "^14.0.12",
+    "@types/string": "0.0.30",
     "pg": "^8.2.1"
   }
 }

@@ -1,6 +1,6 @@
-const {Client} = require('pg');
-const auth = require('./auth');
-const client = auth.getClient();
+const {Client} = require("pg");
+const auth = require("./auth");
+const client = new Client(auth.getCredentials());
 
 module.exports = {
     createTables:function () {
@@ -12,7 +12,7 @@ module.exports = {
             `CREATE TABLE Klasse(
                 id SERIAL PRIMARY KEY, 
                 name VARCHAR(30) NOT NULL, 
-                beschreibung VARCHAR(50),
+                beschreibung VARCHAR,
                 legt_eier BOOLEAN,
                 kann_fliegen BOOLEAN,
                 hat_wirbel BOOLEAN,
@@ -26,7 +26,7 @@ module.exports = {
                 id SERIAL PRIMARY KEY,
                 klassenId SERIAL REFERENCES klasse(id),
                 name VARCHAR(30) NOT NULL, 
-                beschreibung VARCHAR(50)
+                beschreibung VARCHAR
             )`
         ))
         .then(() => client.query(
@@ -34,7 +34,7 @@ module.exports = {
                 id SERIAL PRIMARY KEY,
                 ordnungsId SERIAL REFERENCES Ordnung(id),
                 name VARCHAR(30) NOT NULL, 
-                beschreibung VARCHAR(50)
+                beschreibung VARCHAR
             )`
         ))
         .then(() => client.query(
@@ -42,7 +42,7 @@ module.exports = {
                 id SERIAL PRIMARY KEY,
                 familienId SERIAL REFERENCES Familie(id),
                 name VARCHAR(30) NOT NULL, 
-                beschreibung VARCHAR(50)
+                beschreibung VARCHAR
             )`
         ))
         .then(() => client.query(
@@ -50,7 +50,7 @@ module.exports = {
                 id SERIAL PRIMARY KEY,
                 gattungsId SERIAL REFERENCES Gattung(id),
                 name VARCHAR(30) NOT NULL, 
-                beschreibung VARCHAR(50)
+                beschreibung VARCHAR
             )`
         ))
         .then(() => client.query(
@@ -58,7 +58,9 @@ module.exports = {
                 id SERIAL PRIMARY KEY,
                 artId SERIAL REFERENCES Art(id),
                 name VARCHAR(30) NOT NULL, 
-                beschreibung VARCHAR(50)
+                beschreibung VARCHAR,
+                geburtsdatum DATE,
+                geschlecht VARCHAR(1)
             )`
         ))
         .then(() => console.log("tables created"))
