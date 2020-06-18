@@ -261,20 +261,91 @@ public class Pg {
 		}
 		return false;
 	}
-	private boolean insertAnimalSpecies(AnimalSpecies animalSpecies) {
-		return true;
+	public boolean insertAnimalSpecies(AnimalSpecies animalSpecies) {
+		String sql = "INSERT INTO art(id, gattungsid, name, beschreibung)" + 
+				   " VALUES(" + animalSpecies.getId() + ", " + 
+				   				animalSpecies.getGattungsId() + ", " + 
+								"'" + animalSpecies.getName() + "', " + 
+								"'" + animalSpecies.getBeschreibung() + "')";
+		try (Connection conn = DriverManager.getConnection(
+		     this.url, this.user, this.pw);
+		PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+			preparedStatement.execute();
+			return true;
+		} catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+		}
+		return false;
 	}
-	private boolean insertAnimalGenus(AnimalGenus animalGenus) {
-		return true;
+	public boolean insertAnimalGenus(AnimalGenus animalGenus) {
+		String sql = "INSERT INTO gattung(id, familienid, name, beschreibung)" + 
+				   " VALUES(" + animalGenus.getId() + ", " + 
+				   				animalGenus.getFamilienId() + ", " + 
+								"'" + animalGenus.getName() + "', " + 
+								"'" + animalGenus.getBeschreibung() + "')";
+		try (Connection conn = DriverManager.getConnection(
+		     this.url, this.user, this.pw);
+		PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+			preparedStatement.execute();
+			return true;
+		} catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+		}
+		return false;
 	}
-	private boolean insertAnimalFamily(AnimalFamily animalFamily) {
-		return true;
+	public boolean insertAnimalFamily(AnimalFamily animalFamily) {
+		String sql = "INSERT INTO familie(id, ordnungsid, name, beschreibung)" + 
+				   " VALUES(" + animalFamily.getId() + ", " + 
+				   				animalFamily.getOrdnungsId() + ", " + 
+								"'" + animalFamily.getName() + "', " + 
+								"'" + animalFamily.getBeschreibung() + "')";
+		try (Connection conn = DriverManager.getConnection(
+		     this.url, this.user, this.pw);
+		PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+			preparedStatement.execute();
+			return true;
+		} catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+		}
+		return false;
 	}
-	private boolean insertAnimalOrder(AnimalOrder animalOrder) {
-		return true;
+	public boolean insertAnimalOrder(AnimalOrder animalOrder) {
+		String sql = "INSERT INTO ordnung(id, klassenid, name, beschreibung)" + 
+				   " VALUES(" + animalOrder.getId() + ", " + 
+				   				animalOrder.getClassId() + ", " + 
+								"'" + animalOrder.getName() + "', " + 
+								"'" + animalOrder.getBeschreibung() + "')";
+		try (Connection conn = DriverManager.getConnection(
+		     this.url, this.user, this.pw);
+		PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+			preparedStatement.execute();
+			return true;
+		} catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+		}
+		return false;
 	}
-	private boolean insertAnimalClass(AnimalClass animalClass) {
-		return true;
+	public boolean insertAnimalClass(AnimalClass animalClass) {
+		String sql = "INSERT INTO klasse(id, name, beschreibung, legt_eier, kann_fliegen, " + 
+					"hat_wirbel, hat_kiemen, ist_wechselwarm, anzahl_beine)" + 
+					" VALUES(" + animalClass.getId() + ", " + 
+								"'" + animalClass.getName() + "', " + 
+								"'" + animalClass.getBeschreibung() + "', " + 
+								animalClass.isLegtEier() + ", " + 
+								animalClass.isKannFliegen() + ", " +
+								animalClass.isHatWirbel()+ ", " + 
+								animalClass.isHatKiemen() + ", " + 
+								animalClass.isIstWechselwarm() + ", " + 
+								animalClass.getAnzahlBeine() + ")";
+		try (Connection conn = DriverManager.getConnection(
+		     this.url, this.user, this.pw);
+		PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+			preparedStatement.execute();
+			return true;
+		} catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+		}
+		return false;
 	}
 	private int getHighestKey(String tableName) {
 		String sql = "SELECT MAX(id) FROM " + tableName;

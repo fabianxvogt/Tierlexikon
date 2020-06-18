@@ -29,6 +29,8 @@ dependencies {
 
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.1'
+    
+    jdbc 'org.postgresql:postgresql:42.2.0'
 }
 
 application {
@@ -39,4 +41,7 @@ application {
 test {
     // Use junit platform for unit tests
     useJUnitPlatform()
+}
+run {
+    standardInput = System.in
 }

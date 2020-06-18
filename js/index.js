@@ -34,7 +34,7 @@ const queries = require('./queries')
 // b) Joins
 
 // Auswertung des Tierbestands mit Beschreibung der Art
-//queries.joinSpeciesAnimals();
+// queries.joinSpeciesAnimals();
 
 // Join Klassen mit Ordnungen
 //queries.joinClassOrder();
