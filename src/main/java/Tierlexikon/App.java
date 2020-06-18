@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import Tierlexikon.Utils.ConsoleUtils;
 import Tierlexikon.Model.*;
-import Tierlexikon.Pg.Pg;
+import Tierlexikon.Pg.*;
 
 public class App {
 
