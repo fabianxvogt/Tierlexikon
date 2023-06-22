@@ -19,6 +19,6 @@
   "dependencies": {
     "@types/node": "^14.0.12",
     "@types/string": "0.0.30",
-    "pg": "^8.2.1"
+    "pg": "^8.11.0"
   }
 }
